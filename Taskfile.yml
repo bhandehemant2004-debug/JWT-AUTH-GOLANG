@@ -21,8 +21,8 @@ tasks:
     requires:
       vars:
         - MIGRATION_NAME
-      cmds:
-        - goose create {{.MIGRATION_TIME}} sql
+    cmds:
+        - goose create {{.MIGRATION_NAME}} sql
 
   goose:up-all:
     desc: Apply all db migration
@@ -34,8 +34,8 @@ tasks:
     requires:
       vars:
         - VERSION
-      cmds:
-        - goose up-to {{.VERSION}}
+    cmds:
+      - goose up-to {{.VERSION}}
 
   goose:up-by-one:
     desc: apply all the changes made in the next migration
@@ -47,8 +47,8 @@ tasks:
     requires:
       vars:
         - VERSION
-      cmds:
-        - goose down-to {{.VERSION}}
+    cmds:
+      - goose down-to {{.VERSION}}
     
   goose:up-by-one:
     desc: rollback a single migration from the current state
