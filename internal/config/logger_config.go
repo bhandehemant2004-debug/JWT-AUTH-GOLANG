@@ -10,7 +10,7 @@ func GetLogger(AppEnv string) *zap.Logger{
 
 	logger := zap.Must(zap.NewProduction())
 
-	if AppEnv == "developement"{
+	if AppEnv == "development"{
 		logger = zap.Must(zap.NewDevelopment())
 	}
 	defer func(logger *zap.Logger){

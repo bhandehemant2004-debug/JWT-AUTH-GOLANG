@@ -17,18 +17,18 @@ type ServerConfig struct{
 func LoadServerConfig()(*ServerConfig,error){
 
 	err := godotenv.Load()
-  if err != nil {
-    log.Fatal("Error loading .env file")
-  }
+  	if err != nil {
+    	log.Fatal("Error loading .env file")
+  	}
 
-  cnf:= &ServerConfig{
-	Port: LoadSingleEnvVar("PORT",":3001"),
-	ReadTimeout: time.Duration(LoadSingleEnvVar("READTIME_OUT",15))*time.Second ,
-	WriteTimeout: time.Duration(LoadSingleEnvVar("WRITETIME_OUT",15))*time.Second ,
-	IdleTimeout: time.Duration(LoadSingleEnvVar("READTIME_OUT",15))*time.Second ,
-	AppEnv: LoadSingleEnvVar("APP_ENV","developement"),
-  }
+  	cnf:= &ServerConfig{
+		Port: LoadSingleEnvVar("PORT",":3001"),
+		ReadTimeout: time.Duration(LoadSingleEnvVar("READTIME_OUT",15))*time.Second ,
+		WriteTimeout: time.Duration(LoadSingleEnvVar("WRITETIME_OUT",15))*time.Second ,
+		IdleTimeout: time.Duration(LoadSingleEnvVar("READTIME_OUT",15))*time.Second ,
+		AppEnv: LoadSingleEnvVar("APP_ENV","developement"),
+  	}
 
-  return cnf,nil
+  	return cnf,nil
 
 }
