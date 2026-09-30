@@ -24,15 +24,12 @@ type UserRoleControllerInterface interface {
 }
 
 type UserRoleController struct {
-	userroleservice services.UserRoleService
+	userroleservice services.UserRoleServiceInterface
 	logger          *zap.Logger
 	serverConfig    *config.ServerConfig
 }
 
-func NewUserRoleController(
-	userroleservice services.UserRoleService,
-	logger *zap.Logger,
-	serverConfig *config.ServerConfig,
+func NewUserRoleController(userroleservice services.UserRoleServiceInterface,logger *zap.Logger,serverConfig *config.ServerConfig,
 ) UserRoleControllerInterface {
 	return &UserRoleController{
 		userroleservice: userroleservice,

@@ -20,12 +20,12 @@ type RoleContorllerInterface interface{
 
 
 type RoleController struct{
-	roleController services.RoleService
+	roleController services.RoleServiceInterface
 	logger *zap.Logger
 	serverConfig *config.ServerConfig
 }
 
-func NewRoleController(roleController services.RoleService,logger *zap.Logger,serverConfig *config.ServerConfig,) RoleContorllerInterface {
+func NewRoleController(roleController services.RoleServiceInterface,logger *zap.Logger,serverConfig *config.ServerConfig,) RoleContorllerInterface {
 	return &RoleController{
 		roleController: roleController,
 		logger:         logger,

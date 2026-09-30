@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/bhandehemant2004-debug/JWT-AUTH-GOLANG/internal/config"
+	"github.com/bhandehemant2004-debug/JWT-AUTH-GOLANG/internal/routers"
 	"github.com/go-playground/validator/v10"
 	"go.uber.org/zap"
 )
@@ -49,7 +50,7 @@ func (app *App)Run(){
 
 	server := &http.Server{
 		Addr: 		app.ServerConfig.Port,
-		Handler:    nil,
+		Handler:    routers.RegisterRouters(logger,db,app.ServerConfig),
 		ReadTimeout: app.ServerConfig.ReadTimeout,
 		WriteTimeout: app.ServerConfig.WriteTimeout,
 		IdleTimeout: app.ServerConfig.IdleTimeout,

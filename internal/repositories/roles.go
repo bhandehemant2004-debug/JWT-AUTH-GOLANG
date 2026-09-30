@@ -52,7 +52,7 @@ func (roleRepository *RoleRepository) UpdateRoleById() {
 	roleRepository.logger.Info("roleRepository->UpdateRoleById")
 }
 
-func NewRoleRepository(db *sql.DB,logger *zap.Logger,serverConfig *config.ServerConfig,) *RoleRepository {
+func NewRoleRepository(db *sql.DB,logger *zap.Logger,serverConfig *config.ServerConfig,) RoleRepositoryInterface{
 	roleRepository := &RoleRepository{
 		db:           db,
 		logger:       logger,

@@ -83,11 +83,7 @@ func (userRoleRepository *UserRoleRepository) CheckUserHasAllRole() {
 	userRoleRepository.logger.Info("userRoleRepository->CheckUserHasAllRole")
 }
 
-func NewUserRoleRepository(
-	db *sql.DB,
-	logger *zap.Logger,
-	serverConfig *config.ServerConfig,
-) *UserRoleRepository {
+func NewUserRoleRepository(db *sql.DB,logger *zap.Logger,serverConfig *config.ServerConfig,) UserRoleRepositoryInterface {
 	userRoleRepository := &UserRoleRepository{
 		db:           db,
 		logger:       logger,

@@ -17,7 +17,7 @@ type UserServiceInterface interface {
 }
 
 type UserService struct {
-	UserRepository repositories.UserRepository
+	UserRepository repositories.UserRepositoryInterface
 	logger       *zap.Logger
 	serverConfig *config.ServerConfig
 }
@@ -65,7 +65,7 @@ func (userService *UserService) UpdateUserById() {
 	userService.UserRepository.UpdateUserById()
 }
 
-func NewUserService(userRepository repositories.UserRepository , logger *zap.Logger ,serverConfig *config.ServerConfig)*UserService{
+func NewUserService(userRepository repositories.UserRepositoryInterface , logger *zap.Logger ,serverConfig *config.ServerConfig)UserServiceInterface{
 	userService := &UserService{
 		UserRepository: userRepository,
 		logger: logger,

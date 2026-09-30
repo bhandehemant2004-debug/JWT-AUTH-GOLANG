@@ -16,7 +16,7 @@ type RoleServiceInterface interface {
 }
 
 type RoleService struct {
-	RoleRepository repositories.RoleRepository
+	RoleRepository repositories.RoleRepositoryInterface
 	logger         *zap.Logger
 	serverConfig   *config.ServerConfig
 }
@@ -57,7 +57,7 @@ func (roleService *RoleService) UpdateRoleById() {
 	roleService.RoleRepository.UpdateRoleById()
 }
 
-func NewRoleService(roleRepository repositories.RoleRepository, logger *zap.Logger, serverConfig *config.ServerConfig) *RoleService {
+func NewRoleService(roleRepository repositories.RoleRepositoryInterface, logger *zap.Logger, serverConfig *config.ServerConfig) RoleServiceInterface {
 	roleService := &RoleService{
 		RoleRepository: roleRepository,
 		logger:         logger,

@@ -58,7 +58,7 @@ func (userRepository *UserRepository) UpdateUserById() {
 	userRepository.logger.Info("userRepository->updatebyid")
 }
 
-func NewUserRepository(db *sql.DB , logger *zap.Logger,ServerConfig *config.ServerConfig)*UserRepository{
+func NewUserRepository(db *sql.DB , logger *zap.Logger,ServerConfig *config.ServerConfig)UserRepositoryInterface{
 	UserRepository:= &UserRepository{
 		db: db,
 		logger: logger,

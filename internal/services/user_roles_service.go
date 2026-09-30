@@ -23,7 +23,7 @@ type UserRoleServiceInterface interface {
 }
 
 type UserRoleService struct {
-	UserRoleRepository repositories.UserRoleRepository
+	UserRoleRepository repositories.UserRoleRepositoryInterface
 	logger             *zap.Logger
 	serverConfig       *config.ServerConfig
 }
@@ -94,7 +94,7 @@ func (userRoleService *UserRoleService) CheckUserHasAllRole() {
 	userRoleService.UserRoleRepository.CheckUserHasAllRole()
 }
 
-func NewUserRoleService(userRoleRepository repositories.UserRoleRepository,logger *zap.Logger,serverConfig *config.ServerConfig,) *UserRoleService {
+func NewUserRoleService(userRoleRepository repositories.UserRoleRepositoryInterface,logger *zap.Logger,serverConfig *config.ServerConfig,) UserRoleServiceInterface{
 	userRoleService := &UserRoleService{
 		UserRoleRepository: userRoleRepository,
 		logger:             logger,

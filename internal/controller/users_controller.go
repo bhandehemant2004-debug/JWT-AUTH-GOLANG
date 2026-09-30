@@ -21,7 +21,7 @@ type UserControllerInterface interface{
 }
 
 type UserController struct{
-	userService services.UserService
+	userService services.UserServiceInterface
 	logger *zap.Logger
 	serverConfig *config.ServerConfig
 }
@@ -90,11 +90,11 @@ func (UserController *UserController) GetUserByUsernameAndEmail(resWriter http.R
 	})
 }
 
-func NewUserController(UserService services.UserService, logger *zap.Logger , serverConfig *config.ServerConfig)UserController{
+func NewUserController(UserService services.UserServiceInterface, logger *zap.Logger , serverConfig *config.ServerConfig)UserControllerInterface{
 	usercontroller :=  &UserController{
 		userService: UserService,
 		logger: logger,
 		serverConfig: serverConfig,
 	}
-	return  *usercontroller
+	return  usercontroller
 }
