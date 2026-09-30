@@ -59,3 +59,8 @@ tasks:
     desc : Rollback all the migrations
     cmds:
       - goose down-to 0
+
+  dev:
+    desc: Start a server with air 
+    cmds :
+      - air
